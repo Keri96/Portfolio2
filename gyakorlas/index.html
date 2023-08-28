@@ -18,6 +18,16 @@
         padding: 60px 0;
       }
     </style>
+    <script src="script.js" type="text/javascript"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("FMrV7MVhu1FcOJ1ZQ");
+      })();
+    </script>
   </head>
   <body class="" data-bs-theme="dark">
     <!-- ////////////////////////////NAVBAR////////////////////////////////// -->
@@ -517,7 +527,7 @@
         </div>
         <div class="row justify-content-center my-5">
           <div class="col-lg-6 text-light">
-            <form>
+            <div>
               <label for="email" class="form-label">Email:</label>
               <input
                 type="email"
@@ -543,22 +553,40 @@
 
               <div class="form-floating mb-4 mt-5">
                 <textarea
-                  id="query"
+                  id="message"
                   class="form-control"
                   style="height: 140px"
                 ></textarea>
                 <label for="query" class="text-dark">Your query...</label>
               </div>
               <div class="mb-4 text-center">
-                <button type="submit" class="btn btn-outline-primary">
+                <button
+                  onclick="sendMail()"
+                  type="submit"
+                  class="btn btn-outline-primary"
+                >
                   Submit
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </section>
+    <script>
+      function sendMail() {
+        const params = {
+          from_name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          message: document.getElementById("message").value,
+        };
+        emailjs
+          .send("keri_service", "template_0zirslj", params)
+          .then(function (res) {
+            alert("Success" + res.status);
+          });
+      }
+    </script>
     <script>
       function myFunction() {
         const element = document.body;
