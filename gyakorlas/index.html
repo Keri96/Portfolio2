@@ -543,13 +543,13 @@
                 id="name"
                 placeholder="Adam South"
               />
-              <label for="subject" class="form-label">Subject:</label>
+              <!--  <label for="subject" class="form-label">Subject:</label>
               <input
                 type="text"
                 class="form-control"
                 id="subject"
                 placeholder="Work"
-              />
+              /> -->
 
               <div class="form-floating mb-4 mt-5">
                 <textarea
@@ -561,7 +561,7 @@
               </div>
               <div class="mb-4 text-center">
                 <button
-                  onclick="sendMail()"
+                  onclick="sendMail(); clearInputFields()"
                   type="submit"
                   class="btn btn-outline-primary"
                 >
@@ -573,7 +573,7 @@
         </div>
       </div>
     </section>
-    <script>
+    <!-- <script>
       function sendMail() {
         const params = {
           from_name: document.getElementById("name").value,
@@ -583,10 +583,10 @@
         emailjs
           .send("keri_service", "template_0zirslj", params)
           .then(function (res) {
-            alert("Success" + res.status);
+            console.log("Success" + res.status);
           });
       }
-    </script>
+    </script> -->
     <script>
       function myFunction() {
         const element = document.body;
